@@ -1,0 +1,79 @@
+<div id="page-wrapper">
+  <header id="header" class="alt">
+    <nav id="nav">
+      <ul>
+        <li class="current">
+          <a href="index.html">Welcome</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <section id="banner">
+    <div class="inner">
+      <header>
+        <h2>Soil Fertility
+          <br> Prediction</h2>
+      </header>
+      <p>
+        <strong>predicts the Soil Fertility using Naive Bayes</strong>
+      </p>
+      <footer>
+        <ul class="buttons vertical">
+          <li>
+            <a href="#main" class="button fit scrolly">Tell Me More</a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+  </section>
+  <article id="main">
+    <section class="wrapper style2 container special-alt">
+      <div class="row 50%">
+        <div class="8u 12u(narrower)">
+          <header>
+            <h2>assess the fertility of soil based on the given data sets using the
+              <strong>naive bayes</strong> algorithm </h2>
+          </header>
+          <footer>
+            <ul class="buttons">
+              <li>
+                <form>
+                  <input type="file" style="display:none" (change)="onFileSelected($event)" #filePicker>
+                  <input class="button" (click)="filePicker.click()" value="Pick File">
+                  <input class="button" (click)="onUpload()" value="Upload File" data-toggle="modal" data-target="#exampleModalCenter">
+                  <!-- <input class="button" (click)="naivebayes()" value="Naive Bayes"> -->
+                </form>
+              </li>
+            </ul>
+            <div class="col-6 plrs-typography--body2 mdc-typography--adjust-margin" *ngIf="selectedFile">{{selectedFile.name}}</div>
+          </footer>
+        </div>
+      </div>
+    </section>
+  </article>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">
+          <b>Results :</b>
+        </h5>
+      </div>
+      <div class="modal-body">
+        {{result}} fertility - {{percentage}}%
+        <br>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" [style.width]="percentage + '%'">
+            {{percentage}}%
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
